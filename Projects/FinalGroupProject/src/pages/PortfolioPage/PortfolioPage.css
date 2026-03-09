@@ -1,0 +1,193 @@
+.portfolio-page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem 2rem 3rem;
+}
+
+/* ── Summary ─────────────────────────────────────────────────────────────── */
+.portfolio-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.summary-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.125rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.summary-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.summary-sub {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.gain-card.positive .summary-value { color: var(--accent-green); }
+.gain-card.negative .summary-value { color: var(--accent-red); }
+.gain-card.neutral  .summary-value { color: var(--text-secondary); }
+
+/* ── Table ─────────────────────────────────────────────────────────────────*/
+.portfolio-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.portfolio-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.portfolio-table thead {
+  background: var(--bg-tertiary);
+}
+
+.portfolio-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.portfolio-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.portfolio-row {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.portfolio-row:hover { background: var(--bg-tertiary); }
+.portfolio-row:last-child td { border-bottom: none; }
+
+.symbol-cell {
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--accent-blue) !important;
+}
+
+.name-cell {
+  color: var(--text-secondary) !important;
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.num-col { text-align: right; font-family: var(--font-mono); }
+.num-col th { text-align: right; }
+
+.change-cell.positive { color: var(--accent-green) !important; }
+.change-cell.negative { color: var(--accent-red) !important; }
+.change-cell.neutral  { color: var(--text-secondary) !important; }
+
+.gain-cell.positive { color: var(--accent-green) !important; }
+.gain-cell.negative { color: var(--accent-red) !important; }
+
+.gain-pct {
+  font-size: 0.78rem;
+  opacity: 0.8;
+}
+
+.editable-qty {
+  cursor: pointer;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 1px;
+}
+
+.editable-qty:hover { border-bottom-color: var(--accent-blue); }
+
+.qty-input {
+  width: 70px;
+  padding: 0.25rem 0.4rem;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--accent-blue);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  text-align: right;
+  outline: none;
+}
+
+.actions-col { text-align: center; }
+
+.btn-remove {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-remove:hover {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+}
+
+.skeleton-text {
+  display: inline-block;
+  width: 60px;
+  height: 14px;
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* ── Empty ─────────────────────────────────────────────────────────────────*/
+.empty-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  color: var(--text-muted);
+}
+
+.empty-sub {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .portfolio-page { padding: 1rem 1rem 2rem; }
+  .name-cell, .gain-pct { display: none; }
+}
