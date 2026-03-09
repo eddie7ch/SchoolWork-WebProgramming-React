@@ -17,13 +17,13 @@ import './StockDetailsPage.css';
 export default function StockDetailsPage() {
   const { symbol } = useParams();
   const navigate = useNavigate();
+  const [interval, setInterval] = useState('daily');
   const { quote, history, overview, loading, error, refresh } = useStock(symbol, interval);
   const { addToWatchlist, removeFromWatchlist, isInWatchlist } = useWatchlist();
   const { addHolding, isInPortfolio } = usePortfolio();
   const [news, setNews] = useState([]);
   const [buyShares, setBuyShares] = useState('');
   const [buyModalOpen, setBuyModalOpen] = useState(false);
-  const [interval, setInterval] = useState('daily');
   const inWatchlist = isInWatchlist(symbol);
 
   useEffect(() => {
