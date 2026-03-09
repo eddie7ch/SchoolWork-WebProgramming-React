@@ -11,7 +11,7 @@
 import { useState, useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import {
-  getPopularMovies,
+  getTopRatedMovies,
   searchMovies,
   discoverMovies,
   getGenres,
@@ -58,8 +58,8 @@ function HomePage() {
           // Genre filter uses TMDB Discover API
           data = await discoverMovies(Array.from(activeGenres).join(','), page)
         } else {
-          // Default: popular movies
-          data = await getPopularMovies(page)
+          // Default: top-rated movies (as per assignment requirements)
+          data = await getTopRatedMovies(page)
         }
 
         if (!cancelled) {
@@ -109,7 +109,7 @@ function HomePage() {
     <div className={styles.page}>
       <header className={styles.header}>
         <h1 className={styles.title}>🎬 Movie Browser</h1>
-        <p className={styles.subtitle}>Search, filter, and explore movies powered by TMDB</p>
+        <p className={styles.subtitle}>Browse top-rated movies — search and filter powered by TMDB</p>
       </header>
 
       <SearchBar onSearch={handleSearch} currentQuery={query} />

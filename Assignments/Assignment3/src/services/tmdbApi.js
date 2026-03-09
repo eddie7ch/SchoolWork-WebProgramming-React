@@ -22,9 +22,9 @@ async function apiFetch(endpoint) {
   return res.json()
 }
 
-/** Fetch the current popular movies for a given page. */
-export async function getPopularMovies(page = 1) {
-  return apiFetch(`/movie/popular?page=${page}`)
+/** Fetch the top-rated movies for a given page. */
+export async function getTopRatedMovies(page = 1) {
+  return apiFetch(`/movie/top_rated?page=${page}`)
 }
 
 /** Search movies by title query for a given page. */

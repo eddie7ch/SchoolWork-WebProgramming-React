@@ -122,7 +122,7 @@ All TMDB API calls are in `src/services/tmdbApi.js`:
 
 | Function | Endpoint | Used For |
 |---|---|---|
-| `getPopularMovies(page)` | `/movie/popular` | Default home page listing |
+| `getTopRatedMovies(page)` | `/movie/top_rated` | Default home page listing (top-rated) |
 | `searchMovies(query, page)` | `/search/movie` | Text search |
 | `discoverMovies(genreIds, page)` | `/discover/movie` | Genre filter |
 | `getGenres()` | `/genre/movie/list` | Genre filter labels |
