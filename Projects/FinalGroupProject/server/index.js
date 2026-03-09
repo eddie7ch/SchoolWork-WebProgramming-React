@@ -5,9 +5,16 @@ import { Server } from 'socket.io';
 const app = express();
 const httpServer = createServer(app);
 
+// Allow localhost in dev + any origins set via ALLOWED_ORIGINS env var (comma-separated)
+const baseOrigins = ['http://localhost:5173', 'http://127.0.0.1:5173'];
+const envOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',').map((o) => o.trim())
+  : [];
+const allowedOrigins = [...baseOrigins, ...envOrigins];
+
 const io = new Server(httpServer, {
   cors: {
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin: allowedOrigins,
     methods: ['GET', 'POST'],
   },
 });
