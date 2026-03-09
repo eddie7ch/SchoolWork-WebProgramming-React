@@ -4,9 +4,10 @@ import { getStockQuote, getHistoricalData, getCompanyOverview } from '../service
 /**
  * Fetch all data for a single stock symbol.
  * @param {string|null} symbol
+ * @param {'daily'|'weekly'|'monthly'} interval
  * @returns {{ quote, history, overview, loading, error, refresh }}
  */
-export function useStock(symbol) {
+export function useStock(symbol, interval = 'daily') {
   const [quote, setQuote] = useState(null);
   const [history, setHistory] = useState([]);
   const [overview, setOverview] = useState(null);
@@ -20,7 +21,7 @@ export function useStock(symbol) {
     try {
       const [q, h, o] = await Promise.all([
         getStockQuote(symbol),
-        getHistoricalData(symbol),
+        getHistoricalData(symbol, interval),
         getCompanyOverview(symbol),
       ]);
       setQuote(q);
@@ -31,7 +32,7 @@ export function useStock(symbol) {
     } finally {
       setLoading(false);
     }
-  }, [symbol]);
+  }, [symbol, interval]);
 
   useEffect(() => {
     refresh();

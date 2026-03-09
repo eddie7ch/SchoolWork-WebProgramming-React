@@ -17,7 +17,7 @@ import './StockDetailsPage.css';
 export default function StockDetailsPage() {
   const { symbol } = useParams();
   const navigate = useNavigate();
-  const { quote, history, overview, loading, error, refresh } = useStock(symbol);
+  const { quote, history, overview, loading, error, refresh } = useStock(symbol, interval);
   const { addToWatchlist, removeFromWatchlist, isInWatchlist } = useWatchlist();
   const { addHolding, isInPortfolio } = usePortfolio();
   const [news, setNews] = useState([]);
