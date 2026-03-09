@@ -19,7 +19,8 @@ function App() {
   const [meals, setMeals] = useState([])
   const [filteredMeals, setFilteredMeals] = useState([])
   const [categories, setCategories] = useState([])
-  const [activeFilter, setActiveFilter] = useState('')
+  // activeFilters is a Set — supports multi-selection of categories
+  const [activeFilters, setActiveFilters] = useState(new Set())
   const [selectedMeal, setSelectedMeal] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -29,14 +30,14 @@ function App() {
     getCategories().then(setCategories)
   }, [])
 
-  // Re-apply category filter whenever meals list or activeFilter changes
+  // Re-apply category filters whenever meals list or activeFilters changes
   useEffect(() => {
-    if (!activeFilter) {
+    if (activeFilters.size === 0) {
       setFilteredMeals(meals)
     } else {
-      setFilteredMeals(meals.filter((m) => m.strCategory === activeFilter))
+      setFilteredMeals(meals.filter((m) => activeFilters.has(m.strCategory)))
     }
-  }, [meals, activeFilter])
+  }, [meals, activeFilters])
 
   /**
    * handleSearch - Called by SearchBar on submit.
@@ -47,8 +48,7 @@ function App() {
     setLoading(true)
     setError('')
     setMeals([])
-    setActiveFilter('')
-
+      setActiveFilters(new Set())
     try {
       // Split on commas and trim each ingredient
       const ingredients = input.split(',').map((i) => i.trim()).filter(Boolean)
@@ -98,12 +98,20 @@ function App() {
       {/* Search bar — accepts comma-separated ingredients */}
       <SearchBar onSearch={handleSearch} />
 
-      {/* Filter by category — only shown once results are loaded */}
+      {/* Filter by category — supports multi-selection; only shown once results are loaded */}
       {meals.length > 0 && (
         <FilterBar
           categories={categories}
-          activeFilter={activeFilter}
-          onFilter={setActiveFilter}
+          activeFilters={activeFilters}
+          onToggle={(cat) => {
+            // Toggle the selected category in the Set
+            setActiveFilters((prev) => {
+              const next = new Set(prev)
+              next.has(cat) ? next.delete(cat) : next.add(cat)
+              return next
+            })
+          }}
+          onClear={() => setActiveFilters(new Set())}
         />
       )}
 
@@ -111,7 +119,7 @@ function App() {
       {loading && <p className="app__status">Searching for recipes...</p>}
       {error && <p className="app__status app__status--error">{error}</p>}
       {!loading && meals.length > 0 && filteredMeals.length === 0 && (
-        <p className="app__status">No recipes match that filter.</p>
+        <p className="app__status">No recipes match the selected filters.</p>
       )}
 
       {/* Recipe grid */}
