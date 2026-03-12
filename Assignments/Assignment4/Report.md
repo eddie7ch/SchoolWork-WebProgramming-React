@@ -48,14 +48,14 @@ test: {
 
 | File | Component / Module | Tests |
 |---|---|---|
-| `tmdbApi.test.js` | `services/tmdbApi.js` | 18 |
-| `SearchBar.test.jsx` | `SearchBar` | 11 |
+| `tmdbApi.test.js` | `services/tmdbApi.js` | 19 |
+| `SearchBar.test.jsx` | `SearchBar` | 12 |
 | `GenreFilter.test.jsx` | `GenreFilter` | 11 |
-| `MovieCard.test.jsx` | `MovieCard` | 12 |
-| `Pagination.test.jsx` | `Pagination` | 12 |
+| `MovieCard.test.jsx` | `MovieCard` | 13 |
+| `Pagination.test.jsx` | `Pagination` | 13 |
 | `HomePage.test.jsx` | `HomePage` (integration) | 12 |
-| `MoviePortal.test.jsx` | `MoviePortal` | 13 |
-| **Total** | | **89** |
+| `MoviePortal.test.jsx` | `MoviePortal` | 15 |
+| **Total** | | **95** |
 
 ### 2.3 Mocking Strategy
 
@@ -262,4 +262,4 @@ The layouts were verified using Chrome DevTools Device Toolbar at:
 | Responsive | `SearchBar.module.css` | Full-width button on mobile |
 | Responsive | `Pagination.module.css` | Smaller buttons on mobile |
 | Testing | `package.json`, `vite.config.js` | Added Vitest + React Testing Library dependencies and config |
-| Testing | `src/__tests__/` | 89 unit/integration tests across 7 test files |
+| Testing | `src/__tests__/` | 95 unit/integration tests across 7 test files |

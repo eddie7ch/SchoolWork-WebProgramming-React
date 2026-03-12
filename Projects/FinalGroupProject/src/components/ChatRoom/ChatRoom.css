@@ -180,3 +180,28 @@
 .chat-input::placeholder {
   color: var(--text-muted);
 }
+
+/* ── Link / image rendering inside chat messages ─────────────────── */
+.msg-link {
+  color: var(--accent-blue);
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.msg-link:hover {
+  opacity: 0.75;
+}
+
+.msg-media {
+  display: block;
+  margin-top: 4px;
+}
+
+.msg-image {
+  display: block;
+  margin-top: 6px;
+  max-width: 240px;
+  max-height: 180px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}

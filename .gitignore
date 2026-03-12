@@ -4,10 +4,10 @@ node_modules/
 .pnp.js
 
 # Build outputs
-/build
-/dist
-/.next/
-/out/
+build/
+dist/
+.next/
+out/
 
 # Environment variables
 .env

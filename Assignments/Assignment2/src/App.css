@@ -147,6 +147,23 @@
   margin-right: 4px;
 }
 
+.recipe-card__time {
+  font-size: 0.82em;
+  color: #777;
+  margin: 0;
+}
+
+.recipe-card__description {
+  font-size: 0.82em;
+  color: #555;
+  line-height: 1.45;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .recipe-card__btn {
   margin-top: 6px;
   padding: 8px;

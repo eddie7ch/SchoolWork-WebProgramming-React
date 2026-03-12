@@ -1,16 +1,109 @@
-D:\Bow Valley college\SchoolWork-WebProgramming-React\Assignments\Assignment4\node_modules\.bin\vitest:2
-basedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
-          ^^^^^^^
 
-SyntaxError: missing ) after argument list
-    at wrapSafe (node:internal/modules/cjs/loader:1690:18)
-    at Module._compile (node:internal/modules/cjs/loader:1733:20)
-    at Object..js (node:internal/modules/cjs/loader:1892:10)
-    at Module.load (node:internal/modules/cjs/loader:1479:32)
-    at Module._load (node:internal/modules/cjs/loader:1298:12)
-    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
-    at wrapModuleLoad (node:internal/modules/cjs/loader:244:24)
-    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
-    at node:internal/main/run_main_module:33:47
+> movie-portal@0.0.0 test:run
+> vitest run --reporter=verbose
 
-Node.js v25.0.0
+
+ RUN  v1.6.1 D:/Bow Valley college/SchoolWork-WebProgramming-React/Assignments/Assignment4
+
+ Γ£ô src/__tests__/tmdbApi.test.js > IMAGE_BASE > exports the TMDB image base URL
+ Γ£ô src/__tests__/tmdbApi.test.js > getPopularMovies > calls the /movie/popular endpoint
+ Γ£ô src/__tests__/tmdbApi.test.js > getPopularMovies > defaults to page 1
+ Γ£ô src/__tests__/tmdbApi.test.js > getPopularMovies > passes the requested page number
+ Γ£ô src/__tests__/tmdbApi.test.js > getPopularMovies > includes the API key in the URL
+ Γ£ô src/__tests__/tmdbApi.test.js > getPopularMovies > throws a descriptive error on a non-OK response
+ Γ£ô src/__tests__/tmdbApi.test.js > getPopularMovies > returns the parsed JSON data
+ Γ£ô src/__tests__/tmdbApi.test.js > searchMovies > calls the /search/movie endpoint
+ Γ£ô src/__tests__/tmdbApi.test.js > searchMovies > URL-encodes the search query
+ Γ£ô src/__tests__/tmdbApi.test.js > searchMovies > defaults to page 1
+ Γ£ô src/__tests__/tmdbApi.test.js > searchMovies > passes a custom page number
+ Γ£ô src/__tests__/tmdbApi.test.js > discoverMovies > calls the /discover/movie endpoint
+ Γ£ô src/__tests__/tmdbApi.test.js > discoverMovies > includes the genre IDs in the URL
+ Γ£ô src/__tests__/tmdbApi.test.js > getGenres > calls the /genre/movie/list endpoint
+ Γ£ô src/__tests__/tmdbApi.test.js > getGenres > returns the genres array from the response
+ Γ£ô src/__tests__/tmdbApi.test.js > getGenres > returns an empty array when genres key is missing
+ Γ£ô src/__tests__/tmdbApi.test.js > getGenres > throws on a non-OK response
+ Γ£ô src/__tests__/tmdbApi.test.js > getMovieDetails > calls /movie/:id with the given id
+ Γ£ô src/__tests__/tmdbApi.test.js > getMovieCredits > calls /movie/:id/credits with the given id
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > shows a loading indicator initially
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > renders the movie title
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > renders the release year extracted from release_date
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > displays "N/A" when release_date is absent
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > renders the vote_average formatted to one decimal
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > renders the poster image with the movie title as alt text
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > builds the poster URL using IMAGE_BASE and poster_path
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > uses the fallback image URL when poster_path is null
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > has role="button" for keyboard navigation
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > the card button has an accessible aria-label
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > the card is focusable (has tabIndex 0)
+ Γ£ô src/__tests__/SearchBar.test.jsx > SearchBar > renders a text input
+ Γ£ô src/__tests__/SearchBar.test.jsx > SearchBar > renders a Search submit button
+ Γ£ô src/__tests__/SearchBar.test.jsx > SearchBar > input has an accessible label
+ Γ£ô src/__tests__/SearchBar.test.jsx > SearchBar > input displays the currentQuery prop as its value
+ Γ£ô src/__tests__/SearchBar.test.jsx > SearchBar > does not render the clear button when the query is empty
+ Γ£ô src/__tests__/SearchBar.test.jsx > SearchBar > renders the clear button when currentQuery is populated
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > calls onClick when the card is clicked
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > calls onClick when the Enter key is pressed on the card
+ Γ£ô src/__tests__/MovieCard.test.jsx > MovieCard > does not call onClick when a non-Enter key is pressed
+ Γ£ô src/__tests__/GenreFilter.test.jsx > GenreFilter > renders the "All" button
+ Γ£ô src/__tests__/GenreFilter.test.jsx > GenreFilter > renders a button for every genre
+ Γ£ô src/__tests__/GenreFilter.test.jsx > GenreFilter > renders correctly with an empty genres array
+ Γ£ô src/__tests__/GenreFilter.test.jsx > GenreFilter > the wrapper has a group role and accessible label
+ Γ£ô src/__tests__/GenreFilter.test.jsx > GenreFilter > "All" button has aria-pressed="true" when no genres are active
+ Γ£ô src/__tests__/GenreFilter.test.jsx > GenreFilter > "All" button has aria-pressed="false" when a genre is active
+ Γ£ô src/__tests__/GenreFilter.test.jsx > GenreFilter > an active genre button has aria-pressed="true"
+ Γ£ô src/__tests__/GenreFilter.test.jsx > GenreFilter > an inactive genre button has aria-pressed="false"
+ Γ£ô src/__tests__/SearchBar.test.jsx > SearchBar > clicking the clear button calls onSearch with an empty string
+ Γ£ô src/__tests__/HomePage.test.jsx > HomePage > renders the page heading
+ Γ£ô src/__tests__/HomePage.test.jsx > HomePage > renders the subtitle
+ Γ£ô src/__tests__/HomePage.test.jsx > HomePage > shows a loading message while fetching movies
+ Γ£ô src/__tests__/HomePage.test.jsx > HomePage > renders movie titles after a successful fetch
+ Γ£ô src/__tests__/GenreFilter.test.jsx > GenreFilter > clicking a genre button calls onToggle with that genre id
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > renders a Prev and Next button
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > renders the component inside a <nav> landmark
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > renders visible page number buttons around the current page
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > Prev button is disabled on the first page
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > Next button is disabled on the last page
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > Prev button is enabled when not on the first page
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > the current page button has aria-current="page"
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > non-current page buttons do not have aria-current
+ Γ£ô src/__tests__/SearchBar.test.jsx > SearchBar > clicking the clear button empties the input
+ Γ£ô src/__tests__/GenreFilter.test.jsx > GenreFilter > clicking "All" calls onClear
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > clicking Next calls onPageChange with currentPage + 1
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > clicking Prev calls onPageChange with currentPage - 1
+ Γ£ô src/__tests__/GenreFilter.test.jsx > GenreFilter > clicking different genres calls onToggle with the correct id each time
+ Γ£ô src/__tests__/HomePage.test.jsx > HomePage > renders genre filter buttons after genres load
+ Γ£ô src/__tests__/HomePage.test.jsx > HomePage > shows pagination when there are movies and multiple pages
+ Γ£ô src/__tests__/HomePage.test.jsx > HomePage > shows an error message when the API call fails
+ Γ£ô src/__tests__/HomePage.test.jsx > HomePage > shows a "no movies found" message when results are empty
+ Γ£ô src/__tests__/HomePage.test.jsx > HomePage > hides pagination when there are no results
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > renders the movie title after data loads
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > renders the movie tagline
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > renders the movie overview
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > renders the release year
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > renders the runtime
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > renders genre tags
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > renders cast member names
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > the modal container has role="dialog"
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > the dialog has aria-modal="true"
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > the close button has an accessible aria-label
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > shows an error message when the API fetch fails
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > clicking a numbered page button calls onPageChange with that number
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > shows ellipsis before the visible range when far from the start
+ Γ£ô src/__tests__/Pagination.test.jsx > Pagination > shows page 1 when currentPage is far from the start
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > clicking the close button calls navigate(-1)
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > clicking "Back to Movies" button calls navigate(-1)
+ Γ£ô src/__tests__/MoviePortal.test.jsx > MoviePortal > content is rendered into the portal-root element
+ Γ£ô src/__tests__/SearchBar.test.jsx > SearchBar > calls onSearch with the trimmed value on form submit
+ Γ£ô src/__tests__/HomePage.test.jsx > HomePage > calls searchMovies when user submits a search query
+ Γ£ô src/__tests__/SearchBar.test.jsx > SearchBar > calls onSearch when the user presses Enter
+ Γ£ô src/__tests__/SearchBar.test.jsx > SearchBar > clears the input when currentQuery prop changes to empty string
+ Γ£ô src/__tests__/SearchBar.test.jsx > SearchBar > updates the input when currentQuery prop changes to a new value
+ Γ£ô src/__tests__/HomePage.test.jsx > HomePage > calls discoverMovies when a genre is selected
+ Γ£ô src/__tests__/HomePage.test.jsx > HomePage > calls getPopularMovies again when "All" genre is clicked after a selection
+
+ Test Files  7 passed (7)
+      Tests  95 passed (95)
+   Start at  15:02:18
+   Duration  1.79s (transform 343ms, setup 711ms, collect 2.11s, tests 1.69s, environment 3.58s, prepare 953ms)
+
+

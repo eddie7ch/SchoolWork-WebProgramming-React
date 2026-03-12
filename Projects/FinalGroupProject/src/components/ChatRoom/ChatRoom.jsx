@@ -5,6 +5,40 @@ import { formatRelativeTime } from '../../utils/formatters.js';
 import './ChatRoom.css';
 
 /**
+ * Parse a plain-text message and render URLs as clickable links.
+ * If the URL points to an image file, also renders an inline preview.
+ * This runs on already-sanitised text from the server (no HTML injection risk).
+ * @param {string} text
+ * @returns {React.ReactNode[]}
+ */
+function renderMessage(text) {
+  // Split on http(s) URLs — capturing group keeps the URLs in the parts array
+  const parts = text.split(/(https?:\/\/[^\s]+)/g);
+  const imageExt = /\.(jpg|jpeg|png|gif|webp)(\?.*)?$/i;
+
+  return parts.map((part, i) => {
+    if (/^https?:\/\//.test(part)) {
+      if (imageExt.test(part)) {
+        // Render image URL as a link + inline preview
+        return (
+          <span key={i} className="msg-media">
+            <a href={part} target="_blank" rel="noopener noreferrer" className="msg-link">{part}</a>
+            <img src={part} alt="Shared image" className="msg-image" />
+          </span>
+        );
+      }
+      // Render non-image URL as a clickable link
+      return (
+        <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="msg-link">
+          {part}
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
+/**
  * Real-time chat room component powered by Socket.io.
  * @param {{ roomId: string, roomTitle?: string }} props
  */
@@ -98,8 +132,8 @@ export default function ChatRoom({ roomId, roomTitle }) {
                   {formatRelativeTime(msg.timestamp)}
                 </time>
               </div>
-              {/* Message was sanitised server-side; rendered as plain text */}
-              <p className="msg-text">{msg.message}</p>
+              {/* Message was sanitised server-side; URLs become clickable links/image previews */}
+              <p className="msg-text">{renderMessage(msg.message)}</p>
             </div>
           </div>
         ))}
