@@ -10,6 +10,7 @@ export default defineConfig({
     css: true,
   },
   server: {
+    open: true,
     port: 5173,
     proxy: {
       '/socket.io': {
