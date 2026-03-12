@@ -1,6 +1,16 @@
 import { MOCK_NEWS } from '../utils/mockData.js';
 
 const API_KEY = import.meta.env.VITE_ALPHA_VANTAGE_KEY;
+
+/**
+ * Parse Alpha Vantage's compact timestamp format "20240312T183045" into ISO 8601.
+ * @param {string} str
+ * @returns {string}
+ */
+function parseAVDate(str) {
+  if (!str || str.length < 15) return new Date().toISOString();
+  return `${str.slice(0, 4)}-${str.slice(4, 6)}-${str.slice(6, 8)}T${str.slice(9, 11)}:${str.slice(11, 13)}:${str.slice(13, 15)}`;
+}
 const BASE_URL = 'https://www.alphavantage.co/query';
 
 /**
@@ -32,7 +42,7 @@ export async function getMarketNews(symbol = null) {
       title: article.title,
       summary: article.summary,
       source: article.source,
-      publishedAt: article.time_published,
+      publishedAt: parseAVDate(article.time_published),
       url: article.url,
       isBreaking:
         article.overall_sentiment_label === 'Bearish' &&

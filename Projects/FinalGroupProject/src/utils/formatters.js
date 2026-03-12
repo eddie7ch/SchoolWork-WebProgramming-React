@@ -44,11 +44,13 @@ export function formatPercent(value) {
  */
 export function formatDate(date) {
   if (!date) return 'N/A';
+  const d = new Date(date);
+  if (isNaN(d.getTime())) return 'N/A';
   return new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
-  }).format(new Date(date));
+  }).format(d);
 }
 
 /**
@@ -58,7 +60,9 @@ export function formatDate(date) {
  */
 export function formatRelativeTime(date) {
   if (!date) return '';
-  const diffMs = Date.now() - new Date(date).getTime();
+  const d = new Date(date);
+  if (isNaN(d.getTime())) return '';
+  const diffMs = Date.now() - d.getTime();
   const diffSecs = Math.floor(diffMs / 1000);
   const diffMins = Math.floor(diffSecs / 60);
   const diffHours = Math.floor(diffMins / 60);
@@ -68,7 +72,7 @@ export function formatRelativeTime(date) {
   if (diffMins < 60) return `${diffMins}m ago`;
   if (diffHours < 24) return `${diffHours}h ago`;
   if (diffDays < 7) return `${diffDays}d ago`;
-  return formatDate(date);
+  return formatDate(d);
 }
 
 /**
