@@ -149,7 +149,12 @@ This ensures the app is always functional for demonstration even without a valid
 
 ## Deployment
 
-The project consists of two separately deployed services:
+The project consists of two separately deployed services.
+
+| Service | Platform | Live URL |
+|---|---|---|
+| Frontend | Vercel | https://stockpulse-blush.vercel.app |
+| Backend (chat server) | Railway | https://stockpulse-server-production.up.railway.app |
 
 ### Frontend — Vercel
 
