@@ -136,6 +136,8 @@ function App() {
       {/* Recipe detail modal */}
       {selectedMeal && (
         <RecipeDetail meal={selectedMeal} onClose={() => setSelectedMeal(null)} />
+      )}
+    </div>
   )
 }
 
