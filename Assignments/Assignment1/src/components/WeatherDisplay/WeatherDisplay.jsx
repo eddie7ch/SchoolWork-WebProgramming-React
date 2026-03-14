@@ -10,10 +10,10 @@ import WeatherCard from './WeatherCard'
 function WeatherDisplay({ locations }) {
   return (
     <div>
-      {locations.map((location, index) => (
+      {locations.map((location) => (
         // Render a single WeatherCard for each location in the list
         <WeatherCard
-          key={index}
+          key={location.city}
           city={location.city}
           temperature={location.temperature}
           weather={location.weather}

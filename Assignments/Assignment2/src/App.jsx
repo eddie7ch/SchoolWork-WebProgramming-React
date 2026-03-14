@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { searchByIngredient, searchByName, getMealById, getCategories } from './services/mealApi'
+import { searchByIngredient, getMealById, getCategories } from './services/mealApi'
 import SearchBar from './components/SearchBar/SearchBar'
 import FilterBar from './components/FilterBar/FilterBar'
 import RecipeCard from './components/RecipeCard/RecipeCard'
@@ -41,14 +41,14 @@ function App() {
 
   /**
    * handleSearch - Called by SearchBar on submit.
-   * Splits input by comma, searches each ingredient, deduplicates results,
-   * then fetches full details so category/area info is available for filtering.
+   * Splits input by comma, searches each ingredient in parallel,
+   * deduplicates results, then fetches full details for category filtering.
    */
   async function handleSearch(input) {
     setLoading(true)
     setError('')
     setMeals([])
-      setActiveFilters(new Set())
+    setActiveFilters(new Set())
     try {
       // Split on commas and trim each ingredient
       const ingredients = input.split(',').map((i) => i.trim()).filter(Boolean)
@@ -136,8 +136,6 @@ function App() {
       {/* Recipe detail modal */}
       {selectedMeal && (
         <RecipeDetail meal={selectedMeal} onClose={() => setSelectedMeal(null)} />
-      )}
-    </div>
   )
 }
 
