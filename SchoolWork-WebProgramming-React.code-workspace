@@ -1,60 +1,60 @@
 {
- "folders": [
-	{
-	 "name": "SchoolWork-WebProgramming-React",
-	 "path": "."
-	},
-	{
-	 "name": "Assignment 1",
-	 "path": "Assignments/Assignment1"
-	},
-	{
-	 "name": "Assignment 2",
-	 "path": "Assignments/Assignment2"
-	},
-	{
-	 "name": "Assignment 3",
-	 "path": "Assignments/Assignment3"
-	},
-	{
-	 "name": "Assignment 4",
-	 "path": "Assignments/Assignment4"
-	},
-	{
-	 "name": "Final Group Project",
-	 "path": "Projects/FinalGroupProject"
-	}
- ],
+	"folders": [
+		{
+			"name": "SchoolWork-WebProgramming-React",
+			"path": "."
+		},
+		{
+			"name": "Assignment 1",
+			"path": "Assignments/Assignment1"
+		},
+		{
+			"name": "Assignment 2",
+			"path": "Assignments/Assignment2"
+		},
+		{
+			"name": "Assignment 3",
+			"path": "Assignments/Assignment3"
+		},
+		{
+			"name": "Assignment 4",
+			"path": "Assignments/Assignment4"
+		},
+		{
+			"name": "Final Group Project",
+			"path": "Projects/FinalGroupProject"
+		}
+	],
 	"settings": {
 		"editor.formatOnSave": true,
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.tabSize": 2,
-			"files.eol": "\n",
-			"files.exclude": {
-				"**/.git": true,
-				"**/.DS_Store": true,
-				"**/Thumbs.db": true
-			},
-			"search.exclude": {
-				"**/node_modules": true,
-				"**/dist": true,
-				"**/build": true,
-				"**/.next": true,
-				"**/out": true
-			},
-			"files.watcherExclude": {
-				"**/node_modules/**": true,
-				"**/dist/**": true,
-				"**/build/**": true,
-				"**/.next/**": true,
-				"**/out/**": true
-			}
+		"files.eol": "\n",
+		"files.exclude": {
+			"**/.git": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true
 		},
-		"extensions": {
-			"recommendations": [
-				"esbenp.prettier-vscode",
-				"dbaeumer.vscode-eslint",
-				"ms-vscode.powershell"
-			]
+		"search.exclude": {
+			"**/node_modules": true,
+			"**/dist": true,
+			"**/build": true,
+			"**/.next": true,
+			"**/out": true
+		},
+		"files.watcherExclude": {
+			"**/node_modules/**": true,
+			"**/dist/**": true,
+			"**/build/**": true,
+			"**/.next/**": true,
+			"**/out/**": true
 		}
+	},
+	"extensions": {
+		"recommendations": [
+			"esbenp.prettier-vscode",
+			"dbaeumer.vscode-eslint",
+			"ms-vscode.powershell"
+		]
+	}
 }
