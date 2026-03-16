@@ -29,6 +29,32 @@
 		"editor.formatOnSave": true,
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
 		"editor.tabSize": 2,
-		"files.eol": "\n"
-	}
+			"files.eol": "\n",
+			"files.exclude": {
+				"**/.git": true,
+				"**/.DS_Store": true,
+				"**/Thumbs.db": true
+			},
+			"search.exclude": {
+				"**/node_modules": true,
+				"**/dist": true,
+				"**/build": true,
+				"**/.next": true,
+				"**/out": true
+			},
+			"files.watcherExclude": {
+				"**/node_modules/**": true,
+				"**/dist/**": true,
+				"**/build/**": true,
+				"**/.next/**": true,
+				"**/out/**": true
+			}
+		},
+		"extensions": {
+			"recommendations": [
+				"esbenp.prettier-vscode",
+				"dbaeumer.vscode-eslint",
+				"ms-vscode.powershell"
+			]
+		}
 }
