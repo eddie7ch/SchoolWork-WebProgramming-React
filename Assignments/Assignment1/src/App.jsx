@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import './App.css'
-import WeatherDisplay from './components/WeatherDisplay/WeatherDisplay'
-import locations from './data/locations.json'
+import { useState } from "react";
+import "./App.css";
+import WeatherDisplay from "./components/WeatherDisplay/WeatherDisplay";
+import locations from "./data/locations.json";
 
 /**
  * App - Root component.
@@ -10,16 +10,19 @@ import locations from './data/locations.json'
  */
 function App() {
   // Track the user's search input
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState("");
 
   // Filter locations based on search input (case-insensitive, partial match)
   const filteredLocations = locations.filter((location) =>
-    location.city.toLowerCase().includes(search.toLowerCase())
-  )
+    location.city.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <div className="app">
-      <h1 className="title">Weather App</h1>
+      <h1 className="title">🌤 Weather App</h1>
+      <p className="subtitle">
+        Search for a city to see current weather conditions.
+      </p>
 
       {/* Search input — filters the city list in real time */}
       <input
@@ -33,7 +36,7 @@ function App() {
       {/* Pass filtered locations to the dynamic display component */}
       <WeatherDisplay locations={filteredLocations} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

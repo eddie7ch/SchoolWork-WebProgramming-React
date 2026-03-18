@@ -1,5 +1,5 @@
-import './WeatherDisplay.css'
-import WeatherCard from './WeatherCard'
+import "./WeatherDisplay.css";
+import WeatherCard from "./WeatherCard";
 
 /**
  * WeatherDisplay - Dynamically loops over a list of locations
@@ -8,10 +8,17 @@ import WeatherCard from './WeatherCard'
  *   locations - array of { city, temperature, weather } objects
  */
 function WeatherDisplay({ locations }) {
+  // Show a friendly message when no cities match the search
+  if (locations.length === 0) {
+    return (
+      <p className="no-results">No cities found. Try a different search.</p>
+    );
+  }
+
   return (
-    <div>
+    <div className="weather-list">
       {locations.map((location) => (
-        // Render a single WeatherCard for each location in the list
+        // Use city name as a stable, unique key — best practice over array index
         <WeatherCard
           key={location.city}
           city={location.city}
@@ -20,7 +27,7 @@ function WeatherDisplay({ locations }) {
         />
       ))}
     </div>
-  )
+  );
 }
 
-export default WeatherDisplay
+export default WeatherDisplay;
