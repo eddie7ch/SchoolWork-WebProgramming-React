@@ -1,0 +1,45 @@
+name: React CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-assignments:
+    name: Build Assignments
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        assignment: [Assignment1, Assignment2, Assignment3, Assignment4]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "Assignments/${{ matrix.assignment }}/package-lock.json"
+      - name: Install
+        run: npm ci
+        working-directory: "Assignments/${{ matrix.assignment }}"
+      - name: Build
+        run: npm run build --if-present
+        working-directory: "Assignments/${{ matrix.assignment }}"
+
+  build-final-project:
+    name: Build Final Group Project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: Projects/FinalGroupProject/package-lock.json
+      - name: Install
+        run: npm ci
+        working-directory: Projects/FinalGroupProject
+      - name: Build
+        run: npm run build --if-present
+        working-directory: Projects/FinalGroupProject
