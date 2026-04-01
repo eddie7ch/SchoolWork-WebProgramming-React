@@ -87,7 +87,7 @@ export default function StockDetailsPage() {
       {/* Back */}
       <button
         className="back-btn"
-        onClick={() => navigate(-1)}
+        onClick={() => (window.history.length > 1 ? navigate(-1) : navigate('/'))}
         aria-label="Go back"
       >
         ← Back
