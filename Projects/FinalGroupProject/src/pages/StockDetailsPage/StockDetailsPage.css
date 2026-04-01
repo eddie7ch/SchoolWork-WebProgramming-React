@@ -24,7 +24,7 @@
 
 .details-grid {
   display: grid;
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: 1fr;
   gap: 2rem;
   align-items: flex-start;
 }
@@ -209,20 +209,78 @@
 
 /* ── News ────────────────────────────────────────────────────────────────── */
 .stock-news-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
   margin-top: 0.75rem;
 }
 
-/* ── Chat sidebar ────────────────────────────────────────────────────────── */
-.details-chat {
-  position: sticky;
-  top: 80px;
+/* ── Chat toggle button ──────────────────────────────────────────────────────────────── */
+.btn-chat-toggle {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  line-height: 1;
 }
 
-.details-chat .section-title {
-  margin-bottom: 0.75rem;
+.btn-chat-toggle:hover,
+.btn-chat-toggle.active {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+/* ── Floating chat panel ───────────────────────────────────────────────────────────── */
+.chat-panel {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 360px;
+  height: 520px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 200;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+.chat-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-tertiary);
+  flex-shrink: 0;
+}
+
+.chat-panel-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.chat-panel-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.chat-panel-close:hover {
+  color: var(--text-primary);
 }
 
 /* ── Modal ───────────────────────────────────────────────────────────────── */
@@ -335,8 +393,16 @@
     grid-template-columns: 1fr;
   }
 
-  .details-chat {
-    position: static;
+  .stock-news-list {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-panel {
+    display: none;
+  }
+
+  .btn-chat-toggle {
+    display: none;
   }
 
   .stock-details-page {
