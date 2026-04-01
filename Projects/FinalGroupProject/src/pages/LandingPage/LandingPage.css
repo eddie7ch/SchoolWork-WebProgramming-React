@@ -2,9 +2,9 @@
   padding: 0 0 3rem;
 }
 
-/* ── Hero ─────────────────────────────────────────────────────────────────── */
+/* -- Hero ------------------------------------------------------------------- */
 .hero {
-  background: linear-gradient(160deg, #0D1117 0%, #161B22 60%, #0D1117 100%);
+  background: linear-gradient(160deg, #0d1117 0%, #161b22 60%, #0d1117 100%);
   border-bottom: 1px solid var(--border-color);
   padding: 3.5rem 2rem 3rem;
   text-align: center;
@@ -49,7 +49,7 @@
   margin-top: 0.5rem;
 }
 
-/* ── Landing Grid ─────────────────────────────────────────────────────────── */
+/* -- Landing Grid: desktop = stocks left + news sidebar right --------------- */
 .landing-grid {
   display: grid;
   grid-template-columns: 1fr 340px;
@@ -59,7 +59,7 @@
   padding: 2rem 2rem 0;
 }
 
-/* ── News Column ──────────────────────────────────────────────────────────── */
+/* -- News Column ------------------------------------------------------------ */
 .news-column {
   display: flex;
   flex-direction: column;
@@ -88,25 +88,52 @@
 }
 
 @keyframes shimmer {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
+/* -- Tablet (=960px): single column, news moves above stocks --------------- */
 @media (max-width: 960px) {
   .landing-grid {
     grid-template-columns: 1fr;
-    padding: 1.5rem 1rem 0;
+    padding: 1.5rem 1.5rem 0;
   }
 
-  .news-column {
-    order: -1;
+  .hero {
+    padding: 2.5rem 1.5rem 2.5rem;
   }
 
+  .hero-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* -- Mobile (=640px): compact hero, full-width grid ----------------------- */
+@media (max-width: 640px) {
   .hero {
     padding: 2rem 1rem 2rem;
   }
 
   .hero-title {
+    font-size: 1.75rem;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-icon {
     font-size: 2rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.9rem;
+  }
+
+  .landing-grid {
+    padding: 1rem 1rem 0;
+    gap: 1.25rem;
   }
 }

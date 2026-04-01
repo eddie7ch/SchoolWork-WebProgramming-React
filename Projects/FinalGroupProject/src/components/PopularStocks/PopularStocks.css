@@ -2,11 +2,37 @@
   margin-top: 2rem;
 }
 
+.section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Desktop: 3+ columns (auto-fill with 250px min) */
 .stocks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
   margin-top: 1rem;
+}
+
+/* Tablet (=960px): 2 columns */
+@media (max-width: 960px) {
+  .stocks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (=640px): 1 column */
+@media (max-width: 640px) {
+  .stocks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .popular-stocks {
+    margin-top: 1.25rem;
+  }
 }
 
 .skeleton-card {
@@ -18,6 +44,11 @@
 }
 
 @keyframes shimmer {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }

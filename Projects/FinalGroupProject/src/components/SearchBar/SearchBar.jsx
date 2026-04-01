@@ -1,15 +1,17 @@
-import { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { searchStocks } from '../../services/stockApi.js';
-import { useDebounce } from '../../hooks/useDebounce.js';
-import './SearchBar.css';
+import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { searchStocks } from "../../services/stockApi.js";
+import { useDebounce } from "../../hooks/useDebounce.js";
+import "./SearchBar.css";
 
-export default function SearchBar({ placeholder = 'Search stocks by symbol or name…' }) {
-  const [query, setQuery] = useState('');
+export default function SearchBar({
+  placeholder = "Search stocks by symbol or name…",
+}) {
+  const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const debouncedQuery = useDebounce(query, 350);
+  const debouncedQuery = useDebounce(query, 300);
   const navigate = useNavigate();
   const wrapperRef = useRef(null);
 
@@ -44,27 +46,29 @@ export default function SearchBar({ placeholder = 'Search stocks by symbol or na
         setOpen(false);
       }
     }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   function handleSelect(symbol) {
-    setQuery('');
+    setQuery("");
     setOpen(false);
     navigate(`/stock/${symbol}`);
   }
 
   function handleKeyDown(e) {
-    if (e.key === 'Escape') {
+    if (e.key === "Escape") {
       setOpen(false);
-      setQuery('');
+      setQuery("");
     }
   }
 
   return (
     <div className="search-bar" ref={wrapperRef} role="search">
       <div className="search-input-wrapper">
-        <span className="search-icon" aria-hidden="true">🔍</span>
+        <span className="search-icon" aria-hidden="true">
+          🔍
+        </span>
         <input
           type="search"
           className="search-input"
@@ -93,7 +97,7 @@ export default function SearchBar({ placeholder = 'Search stocks by symbol or na
               role="option"
               className="search-result-item"
               onClick={() => handleSelect(item.symbol)}
-              onKeyDown={(e) => e.key === 'Enter' && handleSelect(item.symbol)}
+              onKeyDown={(e) => e.key === "Enter" && handleSelect(item.symbol)}
               tabIndex={0}
             >
               <span className="result-symbol">{item.symbol}</span>
