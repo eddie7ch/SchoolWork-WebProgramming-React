@@ -39,6 +39,11 @@ fgp-test-out.txt
 .DS_Store
 Thumbs.db
 
+# Large media files
+*.mp4
+*.mov
+*.avi
+
 COURSE-INSTRUCTIONS-ALL-ASSIGNMENTS.md
 
 # Local-only assignment requirements and rubrics

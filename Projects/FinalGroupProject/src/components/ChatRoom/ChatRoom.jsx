@@ -1,8 +1,18 @@
-import { useState, useEffect, useRef } from 'react';
-import { useAuth } from '../../context/AuthContext.jsx';
-import { connectSocket, disconnectSocket, joinRoom, leaveRoom, sendMessage, onMessage, offMessage, onRoomUsers, offRoomUsers } from '../../services/chatService.js';
-import { formatRelativeTime } from '../../utils/formatters.js';
-import './ChatRoom.css';
+import { useState, useEffect, useRef } from "react";
+import { useAuth } from "../../context/AuthContext.jsx";
+import {
+  connectSocket,
+  disconnectSocket,
+  joinRoom,
+  leaveRoom,
+  sendMessage,
+  onMessage,
+  offMessage,
+  onRoomUsers,
+  offRoomUsers,
+} from "../../services/chatService.js";
+import { formatRelativeTime } from "../../utils/formatters.js";
+import "./ChatRoom.css";
 
 /**
  * Parse a plain-text message and render URLs as clickable links.
@@ -22,14 +32,27 @@ function renderMessage(text) {
         // Render image URL as a link + inline preview
         return (
           <span key={i} className="msg-media">
-            <a href={part} target="_blank" rel="noopener noreferrer" className="msg-link">{part}</a>
+            <a
+              href={part}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="msg-link"
+            >
+              {part}
+            </a>
             <img src={part} alt="Shared image" className="msg-image" />
           </span>
         );
       }
       // Render non-image URL as a clickable link
       return (
-        <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="msg-link">
+        <a
+          key={i}
+          href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="msg-link"
+        >
           {part}
         </a>
       );
@@ -45,7 +68,7 @@ function renderMessage(text) {
 export default function ChatRoom({ roomId, roomTitle }) {
   const { user } = useAuth();
   const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [users, setUsers] = useState([]);
   const [connected, setConnected] = useState(false);
   const bottomRef = useRef(null);
@@ -56,12 +79,12 @@ export default function ChatRoom({ roomId, roomTitle }) {
 
     const socket = connectSocket(user.username);
 
-    socket.on('connect', () => {
+    socket.on("connect", () => {
       setConnected(true);
       joinRoom(roomId);
     });
 
-    socket.on('disconnect', () => setConnected(false));
+    socket.on("disconnect", () => setConnected(false));
 
     const handleMessage = (msg) => {
       setMessages((prev) => [...prev, msg]);
@@ -82,7 +105,7 @@ export default function ChatRoom({ roomId, roomTitle }) {
 
   // Scroll to newest message
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   function handleSend(e) {
@@ -91,14 +114,22 @@ export default function ChatRoom({ roomId, roomTitle }) {
     if (!text || !user) return;
 
     sendMessage(roomId, text, user.username);
-    setInput('');
+    setInput("");
     inputRef.current?.focus();
   }
 
   if (!user) {
     return (
       <div className="chat-room chat-locked">
-        <p>Please <a href={`/login?from=${encodeURIComponent(window.location.pathname)}`}>sign in</a> to join the chat.</p>
+        <p>
+          Please{" "}
+          <a
+            href={`/login?from=${encodeURIComponent(window.location.pathname)}`}
+          >
+            sign in
+          </a>{" "}
+          to join the chat.
+        </p>
       </div>
     );
   }
@@ -108,19 +139,31 @@ export default function ChatRoom({ roomId, roomTitle }) {
       <div className="chat-header">
         <h3 className="chat-title">{roomTitle ?? `#${roomId}`}</h3>
         <div className="chat-status">
-          <span className={`status-dot${connected ? ' online' : ''}`} aria-hidden="true" />
-          <span className="status-label">{connected ? `${users.length} online` : 'Connecting…'}</span>
+          <span
+            className={`status-dot${connected ? " online" : ""}`}
+            aria-hidden="true"
+          />
+          <span className="status-label">
+            {connected ? `${users.length} online` : "Connecting…"}
+          </span>
         </div>
       </div>
 
-      <div className="chat-messages" role="log" aria-live="polite" aria-label="Chat messages">
+      <div
+        className="chat-messages"
+        role="log"
+        aria-live="polite"
+        aria-label="Chat messages"
+      >
         {messages.length === 0 && (
-          <p className="chat-empty">No messages yet. Be the first to say something!</p>
+          <p className="chat-empty">
+            No messages yet. Be the first to say something!
+          </p>
         )}
         {messages.map((msg, idx) => (
           <div
             key={idx}
-            className={`chat-message${msg.username === user.username ? ' own' : ''}`}
+            className={`chat-message${msg.username === user.username ? " own" : ""}`}
           >
             <span className="msg-avatar" aria-hidden="true">
               {msg.username.charAt(0).toUpperCase()}
