@@ -1,16 +1,21 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext.jsx';
 import './LoginPage.css';
 
 export default function LoginPage() {
   const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
 
+  // Where to go after login — from router state, query param, or default home
+  const searchParams = new URLSearchParams(location.search);
+  const from = location.state?.from ?? searchParams.get('from') ?? '/';
+
   if (isAuthenticated) {
-    navigate('/');
+    navigate(from, { replace: true });
     return null;
   }
 
@@ -22,7 +27,7 @@ export default function LoginPage() {
       return;
     }
     login(trimmed);
-    navigate('/');
+    navigate(from, { replace: true });
   }
 
   return (

@@ -36,7 +36,7 @@ export default function ChatPage() {
         <div className="empty-page">
           <span className="empty-icon" aria-hidden="true">💬</span>
           <p>You need to sign in to join a chat room.</p>
-          <button className="btn-primary" onClick={() => navigate('/login')}>Sign In</button>
+          <button className="btn-primary" onClick={() => navigate('/login', { state: { from: '/chat' } })}>Sign In</button>
         </div>
       </main>
     );

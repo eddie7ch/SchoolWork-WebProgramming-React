@@ -98,7 +98,7 @@ export default function ChatRoom({ roomId, roomTitle }) {
   if (!user) {
     return (
       <div className="chat-room chat-locked">
-        <p>Please <a href="/login">sign in</a> to join the chat.</p>
+        <p>Please <a href={`/login?from=${encodeURIComponent(window.location.pathname)}`}>sign in</a> to join the chat.</p>
       </div>
     );
   }
