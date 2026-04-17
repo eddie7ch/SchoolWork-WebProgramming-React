@@ -6,6 +6,7 @@ on:
     paths:
       - 'Projects/FinalGroupProject/**'
       - 'Assignments/Assignment3/**'
+      - 'web-adventure-game/**'
   workflow_dispatch:
 
 permissions:
@@ -59,6 +60,8 @@ jobs:
           cp -r Projects/FinalGroupProject/dist/. _site/
           mkdir -p _site/movie-browser
           cp -r Assignments/Assignment3/dist/. _site/movie-browser/
+          mkdir -p _site/web-adventure-game
+          cp -r web-adventure-game/. _site/web-adventure-game/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
