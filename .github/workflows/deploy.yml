@@ -1,10 +1,11 @@
-name: Deploy StockPulse to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
     paths:
       - 'Projects/FinalGroupProject/**'
+      - 'Assignments/Assignment3/**'
   workflow_dispatch:
 
 permissions:
@@ -30,16 +31,34 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: Projects/FinalGroupProject/package-lock.json
 
-      - name: Install dependencies
+      # ── Build StockPulse ───────────────────────────────────────────────────
+      - name: Install StockPulse dependencies
         working-directory: Projects/FinalGroupProject
         run: npm ci
 
-      - name: Build
+      - name: Build StockPulse
         working-directory: Projects/FinalGroupProject
         run: npx vite build --base=/SchoolWork-WebProgramming-React/
+
+      # ── Build Movie Browser ────────────────────────────────────────────────
+      - name: Install Movie Browser dependencies
+        working-directory: Assignments/Assignment3
+        run: npm ci
+
+      - name: Build Movie Browser
+        working-directory: Assignments/Assignment3
+        env:
+          VITE_TMDB_API_KEY: ${{ secrets.VITE_TMDB_API_KEY }}
+        run: npx vite build --base=/SchoolWork-WebProgramming-React/movie-browser/
+
+      # ── Merge into single dist ─────────────────────────────────────────────
+      - name: Merge build outputs
+        run: |
+          mkdir -p _site
+          cp -r Projects/FinalGroupProject/dist/. _site/
+          mkdir -p _site/movie-browser
+          cp -r Assignments/Assignment3/dist/. _site/movie-browser/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -47,7 +66,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Projects/FinalGroupProject/dist
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
